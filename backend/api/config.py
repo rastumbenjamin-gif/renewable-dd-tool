@@ -111,7 +111,11 @@ class Settings(BaseSettings):
     MERCHANT_TAIL_DISCOUNT_RATE: float = 0.08
 
     # CORS and Security
-    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
+    ALLOWED_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "https://*.netlify.app",
+        "https://*.vercel.app"
+    ]
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1"]
 
     @property
