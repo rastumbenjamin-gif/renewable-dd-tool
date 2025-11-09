@@ -45,7 +45,8 @@ function DashboardContent() {
   const fetchProgressData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8000/api/v1/dashboard/dd-progress/${projectId}`);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/api/v1/dashboard/dd-progress/${projectId}`);
 
       if (!response.ok) {
         throw new Error('Failed to fetch progress data');
@@ -69,7 +70,8 @@ function DashboardContent() {
 
   const handleAskQuestion = async (question: string) => {
     try {
-      const response = await fetch('http://localhost:8000/api/v1/qa/ask', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/api/v1/qa/ask`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
