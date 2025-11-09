@@ -45,7 +45,8 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ projectId, onUploadComp
         formData.append('category', category);
 
         // Upload file
-        const response = await fetch('http://localhost:8000/api/v1/documents/upload', {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const response = await fetch(`${apiUrl}/api/v1/documents/upload`, {
           method: 'POST',
           body: formData,
         });

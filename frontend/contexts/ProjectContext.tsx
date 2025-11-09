@@ -43,7 +43,8 @@ export const ProjectProvider: React.FC<ProjectProviderProps> = ({ children, proj
   const refreshDocuments = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:8000/api/v1/documents?project_id=${projectId}`);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/api/v1/documents?project_id=${projectId}`);
 
       if (response.ok) {
         const docs = await response.json();
